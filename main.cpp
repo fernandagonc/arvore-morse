@@ -8,12 +8,6 @@ int main (int argc, char **argv){
     char codigo;
 
     morse.construirArvore();
-    
-    if(argc > 1){
-        if(std::string(argv[1]) == "-a"){
-            morse.imprimeArvore();
-        }
-    }
 
     while(std::getline(std::cin, frase)){  
         for (unsigned i=0; i < frase.length(); ++i){
@@ -21,11 +15,14 @@ int main (int argc, char **argv){
             if(codigo == '.' || codigo == '-')
                 codigoLetra.push_back(codigo);
             else if (codigo == ' '){
-                morse.decodifica(codigoLetra);
-                codigoLetra.clear();
+                if (!codigoLetra.empty()) {
+                   morse.decodifica(codigoLetra);
+                   codigoLetra.clear();
+                }
+                else{
+                    std::cout << ' ';
+                }   
             }
-            else if(codigo == ' / ')
-                std::cout << ' ';
         }
         if(!codigoLetra.empty()){
             morse.decodifica(codigoLetra);
@@ -33,5 +30,12 @@ int main (int argc, char **argv){
         }
         std::cout << '\n';
     }         
+
+    if(argc > 1){
+        if(std::string(argv[1]) == "-a"){
+            morse.imprimeArvore();
+        }
+    }
+
     
 }
