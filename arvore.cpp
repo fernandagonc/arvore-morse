@@ -71,6 +71,7 @@ Node* Arvore::adicionaNo(char codigo, Node* node){
             return node->direita;
 		}
     }    
+    return NULL;
 }
 
 void Arvore::imprimeArvore(){
@@ -101,7 +102,7 @@ Node* Arvore::percorreArvore(char codigo, Node* node){
             return node;
 		}
     }    
-
+    return NULL;
 }
 
 void Arvore::decodifica(string codigoLetra){
