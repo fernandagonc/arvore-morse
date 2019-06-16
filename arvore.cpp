@@ -10,10 +10,6 @@ Arvore::Arvore(){
     raiz->direita = NULL;
 }
 
-Node* Arvore::getRaiz(){
-    return this->raiz;
-}
-
 void Arvore::construirArvore(){
     std::ifstream codigoMorse;
     char entrada, codigo, letra = ' ';

@@ -16,7 +16,6 @@ struct Node{
 class Arvore{
     private:
         Node* raiz;
-        int elementos = 0;
         void imprimePreOrdem(Node* node);
 
     public:
@@ -24,7 +23,6 @@ class Arvore{
         void construirArvore();
         Node* adicionaNo(char codigo, Node* node);
         void imprimeArvore();
-        Node* getRaiz();
         Node* percorreArvore(char codigo, Node* node);
         void decodifica(string codigoLetra);
         
