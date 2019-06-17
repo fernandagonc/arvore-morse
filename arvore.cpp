@@ -1,5 +1,5 @@
 #include "arvore.hpp"
-#include <fstream> //ler arquivo
+#include <fstream> 
 
 //https://gist.github.com/toboqus/def6a6915e4abd66e922
 Arvore::Arvore(){
@@ -18,7 +18,7 @@ void Arvore::construirArvore(){
     codigoMorse.open("morse.txt");
 
     if (!codigoMorse) {
-        std::cout << "Unable to open file morse.txt";
+        std::cout << "Falha para abrir o arquivo com o código Morse";
     }
 
     while(1){
@@ -71,34 +71,17 @@ Node* Arvore::adicionaNo(char codigo, Node* node){
 }
 
 void Arvore::imprimeArvore(){
-	imprimePreOrdem(raiz);
 	std::cout << "\n";
+    imprimePreOrdem(raiz);
 }
 
 void Arvore::imprimePreOrdem(Node* node){
     if(node != NULL){
-		std::cout << node->letra << " " << node->codigo << "\n" ;
+        if(node->letra != 0 && node->letra != ' ')
+		        std::cout << node->letra << " " << node->codigo << "\n" ;
 		imprimePreOrdem(node->esquerda);
 		imprimePreOrdem(node->direita);
 	}
-}
-
-Node* Arvore::percorreArvore(char codigo, Node* node){
-    if(codigo == '.'){
-        if(node->esquerda != NULL){
-            return node->esquerda;
-		}else{
-            return node;
-		}
-    }
-    else if(codigo == '-'){
-       if(node->direita != NULL){
-           return node->direita;
-		}else{
-            return node;
-		}
-    }    
-    return NULL;
 }
 
 void Arvore::decodifica(string codigoLetra){
@@ -109,4 +92,18 @@ void Arvore::decodifica(string codigoLetra){
         posicao = percorreArvore(codigo, posicao);
     }
     std::cout << posicao->letra;
+}
+
+Node* Arvore::percorreArvore(char codigo, Node* node){
+    if(codigo == '.'){
+        if(node->esquerda != NULL){
+            return node->esquerda;
+        }
+    }
+    else if(codigo == '-'){
+       if(node->direita != NULL){
+           return node->direita;
+       }
+    }    
+    return NULL;
 }

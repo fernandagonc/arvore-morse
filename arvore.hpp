@@ -23,8 +23,9 @@ class Arvore{
         void construirArvore();
         Node* adicionaNo(char codigo, Node* node);
         void imprimeArvore();
-        Node* percorreArvore(char codigo, Node* node);
         void decodifica(string codigoLetra);
+        Node* percorreArvore(char codigo, Node* node);
+        
         
   
 };
